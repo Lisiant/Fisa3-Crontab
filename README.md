@@ -86,8 +86,14 @@ if __name__ == "__main__":
 터미널에서 `crontab -e` 명령어를 통해 crontab 편집 모드로 들어간다.
 
 이후 로또 번호 저장 스크립트 스케줄을 설정한다.
-
+로또 발표일인 매주 토요일 저녁 9시에 최신 로또 번호를 저장하도록 설정한다.
 ```cron
 0 21 * * 6 /usr/bin/python3 /home/username/lotto_to_db.py >> /home/username/lotto_to_db.log 2>&1
+```
+
+DB에서 로또 번호 조회하는 스크립트 스케줄을 설정한다.
+매일 오전 9시에 최신 회차의 로또 번호를 DB에서 불러오는 작업을 설정한다.
+```cron
+0 9 * * * /usr/bin/python3 /home/username/fetch_lotto_from_db.py >> /home/username/fetch_lotto_from_db.log 2>&1
 ```
 
